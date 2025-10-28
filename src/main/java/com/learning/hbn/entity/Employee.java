@@ -1,9 +1,15 @@
 package com.learning.hbn.entity;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity(name = "empp")
 public class Employee {
-	
+	@Id
 	private int id;
 	private String name,gender;
+	@Column(name = "empSal")
 	private int salary;
 	public Employee() {
 		super();
