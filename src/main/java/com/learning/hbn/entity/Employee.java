@@ -2,11 +2,14 @@ package com.learning.hbn.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity(name = "empp")
 public class Employee {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name,gender;
 	@Column(name = "empSal")
@@ -15,9 +18,8 @@ public class Employee {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Employee(int id, String name, String gender, int salary) {
+	public Employee( String name, String gender, int salary) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.gender = gender;
 		this.salary = salary;

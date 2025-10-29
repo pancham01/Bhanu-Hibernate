@@ -9,22 +9,15 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
+import com.learning.hbn.configuration.HibernateConfiguration;
 import com.learning.hbn.entity.Employee;
 
 public class Main {
 	public static void main(String[] args) {
-		Employee emp = new Employee(1,"Lokesh","male",98000);
+		Employee emp = new Employee("Vakeel Ji","male",98000);
 			
-//		SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg1.xml").buildSessionFactory();
+		SessionFactory sessionFactory  = HibernateConfiguration.getSessionFactory();
 		
-//		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg1.xml").build();
-//		Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build();
-//		
-//		SessionFactory sessionFactory = meta.buildSessionFactory();
-
-		
-		
-		SessionFactory sessionFactory = new MetadataSources(new StandardServiceRegistryBuilder().configure("hibernate.cfg1.xml").build()).getMetadataBuilder().build().buildSessionFactory();
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
 		
