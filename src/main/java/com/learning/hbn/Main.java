@@ -14,16 +14,20 @@ import com.learning.hbn.entity.Employee;
 
 public class Main {
 	public static void main(String[] args) {
-		Employee emp = new Employee("Vakeel Ji","male",98000);
-			
-		SessionFactory sessionFactory  = HibernateConfiguration.getSessionFactory();
-		
+		Employee emp = new Employee();
+
+		SessionFactory sessionFactory = HibernateConfiguration.getSessionFactory();
+
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
+
+//		session.load(emp, 20);
+		emp = session.get(Employee.class, 20);
 		
-		
-		session.persist(emp);
-		tx.commit();
+		System.out.println(emp);
+//		session.persist(emp);
+//		session.persist(emp2);
+//		tx.commit();
 	}
 
 }
