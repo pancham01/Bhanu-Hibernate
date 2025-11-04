@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Transient;
 
 @Entity(name = "empp")
@@ -16,29 +17,31 @@ public class Employee {
 	@Column(name = "empSal")
 	private int salary;
 	
-	@Transient
-	private String address;
+	@OneToOne
+	private Address address;
 	
 	public Employee() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Employee( String name, String gender, int salary, String address) {
-		super();
+	
+	public Employee( String name, String gender, int salary) {
 		this.name = name;
 		this.gender = gender;
 		this.salary = salary;
-		this.address = address;
 	}
 
-	public String getAddress() {
+
+	public Address getAddress() {
 		return address;
 	}
 
-	public void setAddress(String address) {
+
+	public void setAddress(Address address) {
 		this.address = address;
 	}
+
 
 	public int getId() {
 		return id;
@@ -65,10 +68,10 @@ public class Employee {
 		this.salary = salary;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", name=" + name + ", gender=" + gender + ", salary=" + salary + ", address="
 				+ address + "]";
 	}
-	
 }
