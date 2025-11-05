@@ -10,10 +10,10 @@ import com.learning.hbn.entity.Employee;
 
 public class Main {
 	public static void main(String[] args) {
-//		Employee emp = new Employee("Vinay", "Male", 45454);
-//		Address add = new Address("GZB", "UP");
-//		emp.setAddress(add);
-//		add.setEmployee(emp);
+		Employee emp = new Employee("Vinay", "Male", 45454);
+		Address add = new Address("GZB", "UP");
+		emp.setAddress(add);
+		add.setEmployee(emp);
 
 		SessionFactory sessionFactory = HibernateConfiguration.getSessionFactory();
 		Session session = sessionFactory.openSession();
@@ -21,6 +21,11 @@ public class Main {
 
 		getEmpByIdWithAdd(session);
 		getAddByIdWithEmp(session);
+		
+		
+//		session.persist(emp);
+//		session.persist(add);
+		
 
 		tx.commit();
 	}
@@ -33,7 +38,7 @@ public class Main {
 	}
 
 	public static void getAddByIdWithEmp(Session session) {
-		Address address = session.get(Address.class, 2);
+		Address address = session.get(Address.class, 1);
 		System.out.println("address : " + address);
 		System.out.println("address.getEmployee : " + address.getEmployee());
 	}
