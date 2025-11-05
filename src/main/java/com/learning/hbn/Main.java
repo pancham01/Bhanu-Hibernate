@@ -19,12 +19,11 @@ public class Main {
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
 
-		getEmpByIdWithAdd(session);
-		getAddByIdWithEmp(session);
+//		getEmpByIdWithAdd(session);
+//		getAddByIdWithEmp(session);
 		
 		
-//		session.persist(emp);
-//		session.persist(add);
+		session.persist(emp);
 		
 
 		tx.commit();
